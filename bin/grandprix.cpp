@@ -19,24 +19,38 @@
 using namespace std;
 
 // Variabiles
-int N;
+int N, M, tmp, tmp1, tmp2;
+vector <int> cars;
+
 
 // Main code
 int main()
 {
-  // Cncomment the following lines if you want to read/write from files
-  // freopen("input.txt", "r", stdin);
-  // freopen("output.txt", "w", stdout);
+    // Cncomment the following lines if you want to read/write from files
+    freopen("input.txt", "r", stdin);
+    // freopen("output.txt", "w", stdout);
 
-  // Input
-  cin >> N;
+    // Input
+    cin >> N >> M;
+    cars.resize(N);
 
-  // Code
-  // ...
+    for (size_t i = 0; i < N; ++i)
+    {
+        cin >> tmp;
+        cars[tmp - 1] = i;
+    }
 
-  // Output
-  cout << N << endl;
+    for (size_t i = 0; i < M; ++i) {
+        cin >> tmp >> tmp1;
+        tmp2 = cars[tmp - 1];
+        cars[tmp - 1] = cars[tmp1 - 1];
+        cars[tmp1 - 1] = tmp2;
+    }
 
-  // End
-  return 0;
+    for (size_t i = 0; i < N; ++i)
+        if (cars[i] == 0)
+            cout << i + 1 << endl;
+
+    // End
+    return 0;
 }
